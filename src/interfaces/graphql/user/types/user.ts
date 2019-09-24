@@ -3,7 +3,7 @@ import { Post } from './post';
 import { IsOptional, Length, MaxLength, Min } from 'class-validator'
 
 @ObjectType()
-export class User {
+export class UserQueryDto {
     @Field(type => Int)
     id: number;
 

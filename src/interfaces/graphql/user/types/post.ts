@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from 'type-graphql';
-import { User } from './user';
+import { UserQueryDto } from './user';
 
 @ObjectType()
 export class Post {
@@ -22,6 +22,6 @@ export class Post {
     @Field()
     status: number;
 
-    @Field(() => User)
-    postAuthor: User;
+    @Field(() => UserQueryDto)
+    postAuthor: UserQueryDto;
 }

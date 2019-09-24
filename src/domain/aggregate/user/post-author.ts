@@ -7,14 +7,12 @@ import { BadRequestException } from "@nestjs/common";
  */
 export class PostAuthor extends User {
 
-    
-
     /**
      * 发帖
      * @param title 
      * @param content 
      */
-    posting(title: string, content: string) : Post{
+    posting?(title: string, content: string) : Post{
         if (!content || content.length < 20) {
             throw new BadRequestException('帖子内容不能少于20字符')
         }
@@ -26,7 +24,7 @@ export class PostAuthor extends User {
      * 删除帖子
      * @param post 
      */
-    deletePost(post: Post): Post {
+    deletePost?(post: Post): Post {
         if (!post) {
             throw new BadRequestException('请求为空')
         }

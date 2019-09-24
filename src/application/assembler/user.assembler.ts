@@ -1,17 +1,18 @@
 import { Injectable } from "@nestjs/common";
-import { PostAuthor } from "#/domain/model/user/post-author";
-import { User } from "../../interfaces/graphql/user/types/user";
+import { PostAuthor } from "#/domain/aggregate/user/post-author";
+import { UserQueryDto } from "../../interfaces/graphql/user/types/user";
+import { UserEntity } from "#/infrastructure/entity/user.entity";
 
 @Injectable()
 export class UserAssembler {
 
-    assembleQueryPostAuthor(postUser: PostAuthor): User {
-        if (!postUser) {
+    assembleQueryUser(userEntity: UserEntity): UserQueryDto {
+        if (!userEntity) {
             return null
         }
-        const user: User = new User()
-        user.id = postUser.id
-        return user
+        let userDto: UserQueryDto = new UserQueryDto()
+        userDto = Object.assign(userEntity) // 类似于 BeanUtils.copyProperties
+        return userDto
     }
 
 }

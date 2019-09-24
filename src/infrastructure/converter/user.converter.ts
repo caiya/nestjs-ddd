@@ -1,18 +1,19 @@
 import { ConverterInterface } from "./converter";
 import { UserEntity } from "../entity/user.entity";
-import { User } from "#/domain/model/user/user";
+import { User } from "../../domain/aggregate/user/user";
+import { PostAuthor } from "#/domain/aggregate/user/post-author";
 
-export class UserConverter implements ConverterInterface<User, UserEntity> {
+export class UserConverter {
 
-    serialize(user: User): UserEntity {
+    static serialize(user: PostAuthor): UserEntity {
         const userEntity = new UserEntity()
         userEntity.id = user.id
         return userEntity
     }
 
-    deserialize(userEntity: UserEntity): User {
-        const user: User = new User(userEntity.id)
-        return user
+    static deserialize(userEntity: UserEntity): PostAuthor {
+        const postAuthor: PostAuthor = new User(userEntity.id)
+        return postAuthor
     }
 
 }
