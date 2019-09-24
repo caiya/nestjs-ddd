@@ -19,7 +19,7 @@ type Post {
 }
 
 type Query {
-  user(id: Int!): User!
+  user(id: Float!): User!
 }
 
 type User {

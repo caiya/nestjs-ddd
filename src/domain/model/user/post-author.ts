@@ -7,6 +7,8 @@ import { BadRequestException } from "@nestjs/common";
  */
 export class PostAuthor extends User {
 
+    
+
     /**
      * 发帖
      * @param title 

@@ -4,6 +4,6 @@ import { PostAuthor } from "../model/user/post-author";
 export interface IUserRepository {
 
     // 根据id查找发帖人
-    getById(id: number): PostAuthor;
+    getById(id: number): Promise<PostAuthor>;
 
 }

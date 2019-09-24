@@ -1,9 +1,8 @@
 import { Resolver, Query, Mutation, Args, ResolveProperty, Parent } from "@nestjs/graphql";
-import { User } from "../sdl/user";
-import { Post } from "../sdl/post";
-import { Int } from "type-graphql";
-import { UserService } from "../../../application/service/impl/user";
-import { PostService } from "../../../application/service/impl/post";
+import { QueryUserDetailArgs } from "../dto/user-detail.args";
+import { UserService } from "../../../../application/service/impl/user";
+import { PostService } from "../../../../application/service/impl/post";
+import { User } from "../types/user";
 
 @Resolver(of => User)
 export class UserResolver {
@@ -16,8 +15,8 @@ export class UserResolver {
     @Query(returns => User, {
         name: 'user'
     })
-    async getUser(@Args({ name: 'id', type: () => Int }) id: number) {
-        return await this.userService.findOneById(id);
+    async getUser(@Args() requestDto: QueryUserDetailArgs): Promise<User> {
+        return await this.userService.findOneById(requestDto);
     }
 
     @ResolveProperty()
