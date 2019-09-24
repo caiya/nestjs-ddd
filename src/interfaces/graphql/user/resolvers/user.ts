@@ -11,9 +11,7 @@ export class UserResolver {
     constructor(
         @Inject('UserService') private readonly userService: IUserService,
         @Inject('PostService') private readonly postService: IPostService,
-      ) {
-
-      }
+      ) {}
 
     @Query(returns => User, {
         name: 'user'

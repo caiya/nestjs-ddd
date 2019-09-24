@@ -1,6 +1,5 @@
 import { IUserRepository } from "../user";
 import { PostAuthor } from "../../../domain/model/user/post-author";
-import { UserRepositoryInfrastructure } from "../../../infrastructure/repository/user";
 import { Injectable, Inject } from "@nestjs/common";
 
 @Injectable()

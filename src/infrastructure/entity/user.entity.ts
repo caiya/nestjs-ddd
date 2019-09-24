@@ -13,4 +13,5 @@ export class UserEntity {
 
     @Column()
     isActive: boolean;
+
 }

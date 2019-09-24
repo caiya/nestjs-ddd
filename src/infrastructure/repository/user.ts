@@ -1,6 +1,6 @@
 import { IUserRepository } from "../../domain/repository/user";
 import { EntityRepository, Repository, AbstractRepository } from 'typeorm';
-import { UserEntity } from "../mappings/user.entity";
+import { UserEntity } from "../entity/user.entity";
 import { PostAuthor } from "#/domain/model/user/post-author";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
