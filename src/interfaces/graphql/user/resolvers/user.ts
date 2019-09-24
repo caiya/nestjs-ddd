@@ -1,16 +1,19 @@
 import { Resolver, Query, Mutation, Args, ResolveProperty, Parent } from "@nestjs/graphql";
 import { QueryUserDetailArgs } from "../dto/user-detail.args";
-import { UserService } from "../../../../application/service/impl/user";
-import { PostService } from "../../../../application/service/impl/post";
 import { User } from "../types/user";
+import { IUserService } from "#/application/service/user";
+import { IPostService } from "#/application/service/post";
+import { Inject } from "@nestjs/common";
 
 @Resolver(of => User)
 export class UserResolver {
 
     constructor(
-        private readonly userService: UserService,
-        private readonly postService: PostService,
-      ) {}
+        @Inject('UserService') private readonly userService: IUserService,
+        @Inject('PostService') private readonly postService: IPostService,
+      ) {
+
+      }
 
     @Query(returns => User, {
         name: 'user'

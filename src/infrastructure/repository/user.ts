@@ -13,6 +13,7 @@ export class UserRepositoryInfrastructure implements IUserRepository{
     async getById(id: number): Promise<PostAuthor> {
         const userEntity = await this.userRepo.findOne(id)
         console.log('userEntity', userEntity)
+        // po -> do
         return null
     }
 }

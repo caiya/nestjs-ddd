@@ -1,15 +1,14 @@
 import { IUserService } from "../user";
 import { Injectable, Inject } from "@nestjs/common";
-import { UserRepository } from "../../../domain/repository/impl/user";
 import { User } from "#/interfaces/graphql/user/types/user";
 import { QueryUserDetailArgs } from "#/interfaces/graphql/user/dto/user-detail.args";
 import { PostAuthor } from "#/domain/model/user/post-author";
 import { UserAssembler } from "../../../application/assembler/user.assembler";
+import { IUserRepository } from "#/domain/repository/user";
 
-@Injectable()
 export class UserService implements IUserService {
 
-    constructor(private readonly userRepository: UserRepository) {}
+    constructor(@Inject('UserRepository') private readonly userRepository: IUserRepository) {}
 
     @Inject()
     private readonly userAssembler: UserAssembler;
