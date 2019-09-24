@@ -8,5 +8,5 @@ export class User {
     id: number;
 
     @Field(type => [Post])
-    posts?: Post[];
+    posts: Post[];
 }
