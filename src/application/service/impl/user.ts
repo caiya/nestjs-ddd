@@ -7,8 +7,7 @@ import { QueryUserDetailArgs } from "#/interfaces/graphql/user/dto/user-detail.a
 @Injectable()
 export class UserService implements IUserService {
 
-    @Inject()
-    private readonly userRepository: UserRepository
+    constructor(private readonly userRepository: UserRepository) {}
 
     async findOneById (args: QueryUserDetailArgs) : Promise<User> {
         return this.userRepository.getById(args.id)
