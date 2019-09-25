@@ -2,7 +2,7 @@ import { Field, Int, ObjectType } from 'type-graphql';
 import { UserQueryDto } from './user';
 
 @ObjectType()
-export class Post {
+export class PostDto {
 
     @Field(() => Int)
     id: number;

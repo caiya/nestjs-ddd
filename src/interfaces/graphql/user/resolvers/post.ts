@@ -1,8 +1,8 @@
 import { Resolver, ResolveProperty, Parent } from "@nestjs/graphql";
-import { Post } from "../types/post";
+import { PostDto } from "../types/post";
 import { UserService } from "../../../../application/service/impl/user";
 
-@Resolver(of => Post)
+@Resolver(of => PostDto)
 export class PostResolver {
 
     constructor(
@@ -10,7 +10,7 @@ export class PostResolver {
       ) {}
 
     @ResolveProperty('postAuthor')
-    async postAuthor(@Parent() post: Post) {
+    async postAuthor(@Parent() post: PostDto) {
         const { authorId } = post;
         // return await this.userService.findOneById(authorId)
     }

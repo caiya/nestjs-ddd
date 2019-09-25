@@ -20,6 +20,6 @@ export class UserService implements IUserService {
     async findOneById (args: UserDetailQuery) : Promise<UserQueryDto> {
         let uid = args.id
         let user = await this.userMapper.find(uid)
-        return this.userAssembler.assembleQueryUser(user)
+        return this.userAssembler.apply(user)
     }
 }

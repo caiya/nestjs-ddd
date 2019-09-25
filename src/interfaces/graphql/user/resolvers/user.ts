@@ -23,6 +23,9 @@ export class UserResolver {
     @ResolveProperty()
     async posts(@Parent() user) {
         const { id } = user;
-        return await this.postService.findAll({ authorId: id });
+        console.log('user111', user)
+        const posts = await this.postService.findAll({ userId: id });
+        console.log('posts111', posts)
+        return posts || []
     }
 }
