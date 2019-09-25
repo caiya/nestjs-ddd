@@ -4,6 +4,7 @@ import { IUserService } from "#/application/service/user";
 import { IPostService } from "#/application/service/post";
 import { Inject } from "@nestjs/common";
 import { UserDto } from "../types/user";
+import { UserInput } from "../dto/user-add.input";
 
 @Resolver(of => UserDto)
 export class UserResolver {
@@ -27,8 +28,8 @@ export class UserResolver {
         return posts || []
     }
 
-    // @Mutation(returns => )
-    // async addUser(@Args('user') user: UserInput) {
-
-    // }
+    @Mutation(returns => UserDto)
+    async addUser(@Args('user') user: UserInput) {
+        return await this.userService.add(user)
+    }
 }

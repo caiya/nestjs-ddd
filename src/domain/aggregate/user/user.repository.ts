@@ -1,8 +1,8 @@
 import { User } from "./user";
-import { UserDto } from "#/interfaces/graphql/user/types/user";
 
 export interface UserRepository {
     
-    find(id: number): Promise<UserDto>;
+    find(id: number): Promise<User>;
 
+    save(user: User): Promise<User>;
 }

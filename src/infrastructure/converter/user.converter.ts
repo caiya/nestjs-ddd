@@ -1,22 +1,18 @@
-import { ConverterInterface } from "./converter";
 import { UserEntity } from "../entity/user.entity";
 import { User } from "../../domain/aggregate/user/user";
-import { UserDto } from "#/interfaces/graphql/user/types/user";
 
 export class UserConverter {
 
-    static serialize(user: UserDto): UserEntity {
-        const userEntity = new UserEntity()
-        userEntity.id = user.id
+    static serialize(user: User): UserEntity {
+        let userEntity = new UserEntity()
+        userEntity = Object.assign({}, userEntity, user)
         return userEntity
     }
 
-    static deserialize(userEntity: UserEntity): UserDto {
-        let userQueryDto = new UserDto()
-
-        userQueryDto = Object.assign({}, userQueryDto, userEntity)
-
-        return userQueryDto
+    static deserialize(userEntity: UserEntity): User {
+        let user = new User()
+        user = Object.assign({}, user, userEntity)
+        return user
     }
 
 }

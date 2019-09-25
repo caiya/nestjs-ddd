@@ -8,6 +8,10 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
+type Mutation {
+  addUser(user: UserInput!): UserDto!
+}
+
 type PostDto {
   id: Int!
   authorId: Float!
@@ -24,5 +28,14 @@ type Query {
 
 type UserDto {
   id: Int!
+  firstName: String!
+  lastName: String!
+  isActive: Boolean!
   posts: [PostDto!]!
+}
+
+input UserInput {
+  firstName: String!
+  lastName: String!
+  isActive: Boolean!
 }

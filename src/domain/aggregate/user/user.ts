@@ -2,19 +2,17 @@ import { Post } from "../post/post"
 import { BadRequestException } from "@nestjs/common"
 
 /**
- * 用户实体
+ * 领域实体-user
  */
 export class User {
 
-    constructor(private _id: number) {}
+    id: number;
 
-    get id(): number {
-        return this._id
-    }
+    isActive: boolean;
 
-    set id(id: number) {
-        this._id = id
-    }
+    firstName: string;
+
+    lastName: string;
 
     /**
      * 发帖
@@ -43,4 +41,5 @@ export class User {
         post.delete()
         return post
     }
+
 }
