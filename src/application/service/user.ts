@@ -1,8 +1,8 @@
-import { UserQueryDto } from "#/interfaces/graphql/user/types/user";
-import { UserDetailQuery } from "#/interfaces/graphql/user/dto/user-detail.args";
+import { UserDetailQueryArg } from "#/interfaces/graphql/user/dto/user-detail.args";
+import { UserDto } from "#/interfaces/graphql/user/types/user";
 
 export interface IUserService {
 
-    findOneById(userDetailQuery: UserDetailQuery): Promise<UserQueryDto>;
+    findOneById(userDetailQuery: UserDetailQueryArg): Promise<UserDto>;
 
 }

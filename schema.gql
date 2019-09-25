@@ -15,14 +15,14 @@ type PostDto {
   content: String!
   postingTime: DateTime!
   status: Float!
-  postAuthor: UserQueryDto!
+  postAuthor: UserDto!
 }
 
 type Query {
-  user(id: Float!): UserQueryDto!
+  user(id: Float!): UserDto!
 }
 
-type UserQueryDto {
+type UserDto {
   id: Int!
   posts: [PostDto!]!
 }

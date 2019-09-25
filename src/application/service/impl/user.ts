@@ -1,9 +1,9 @@
 import { IUserService } from "../user";
-import { Injectable, Inject } from "@nestjs/common";
-import { UserDetailQuery } from "#/interfaces/graphql/user/dto/user-detail.args";
+import { Inject } from "@nestjs/common";
+import { UserDetailQueryArg } from "#/interfaces/graphql/user/dto/user-detail.args";
 import { UserAssembler } from "../../../application/assembler/user.assembler";
-import { UserQueryDto } from "#/interfaces/graphql/user/types/user";
 import { UserMapperService } from "../../../infrastructure/mapper/user.mapper";
+import { UserDto } from "#/interfaces/graphql/user/types/user";
 
 export class UserService implements IUserService {
 
@@ -17,7 +17,7 @@ export class UserService implements IUserService {
      * 查询服务直接调用 userMapper 查询获取 userEntity 实体，再使用 Assembler 将实体转为 Dto
      * @param args 
      */
-    async findOneById (args: UserDetailQuery) : Promise<UserQueryDto> {
+    async findOneById (args: UserDetailQueryArg) : Promise<UserDto> {
         let uid = args.id
         let user = await this.userMapper.find(uid)
         return this.userAssembler.apply(user)

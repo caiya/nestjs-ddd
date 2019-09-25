@@ -1,12 +1,11 @@
 import { Field, Int, ObjectType, InputType, ArgsType } from 'type-graphql';
 import { PostDto } from '../../post/types/post';
-import { IsOptional, Length, MaxLength, Min } from 'class-validator'
 
 @ObjectType()
-export class UserQueryDto {
+export class UserDto {
     @Field(type => Int)
     id: number;
 
     @Field(type => [PostDto])
-    posts: PostDto[];
+    posts: PostDto;
 }
