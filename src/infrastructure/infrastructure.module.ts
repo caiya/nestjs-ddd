@@ -9,6 +9,6 @@ import { UserRepositoryImpl } from './repository/user.repository';
 @Module({
     imports: [TypeOrmModule.forFeature([UserEntity, PostEntity])],
     providers: [UserMapperService, PostMapperService, UserRepositoryImpl],
-    exports: [UserMapperService, PostMapperService, UserRepositoryImpl]
+    exports: [UserMapperService, PostMapperService, UserRepositoryImpl],
 })
 export class InfrastructureModule {}

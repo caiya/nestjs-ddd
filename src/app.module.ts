@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { DomainModule } from './domain/domain.module';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
 import { InterfacesModule } from './interfaces/interfaces.module';
-import { GraphQLModule } from '@nestjs/graphql'
+import { GraphQLModule } from '@nestjs/graphql';
 import { ApplicationModule } from './application/application.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -20,12 +20,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
       logging: true,
-      logger: 'advanced-console'
+      logger: 'advanced-console',
     }),
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
     }),
-    DomainModule, InfrastructureModule, InterfacesModule, ApplicationModule
+    DomainModule, InfrastructureModule, InterfacesModule, ApplicationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
