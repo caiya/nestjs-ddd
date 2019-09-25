@@ -6,12 +6,12 @@ import { BaseMapperService } from "./base.mapper";
 import { PostEntity } from "../entity/post.entity";
 
 @Injectable()
-export class UserMapperService extends BaseMapperService<UserEntity>{
+export class PostMapperService extends BaseMapperService<PostEntity>{
 
     constructor(
-        @InjectRepository(UserEntity)
-        private readonly userRepo: Repository<UserEntity>,
+        @InjectRepository(PostEntity)
+        private readonly postRepo: Repository<PostEntity>,
     ) {
-        super(userRepo)
+        super(postRepo)
     }
 }
