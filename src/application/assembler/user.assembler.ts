@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { PostAuthor } from "#/domain/aggregate/user/post-author";
 import { UserQueryDto } from "../../interfaces/graphql/user/types/user";
 import { UserEntity } from "#/infrastructure/entity/user.entity";
 

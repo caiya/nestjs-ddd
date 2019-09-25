@@ -1,5 +1,5 @@
 import { PostStatus } from "./post-status";
-import { PostAuthor } from "../user/post-author";
+import { User } from "../user/user";
 
 /**
  * 帖子实体
@@ -33,7 +33,7 @@ export class Post {
     /**
      * 帖子作者
      */
-    private _postAuthor: PostAuthor;
+    private _postAuthor: User;
 
     constructor(_title: string, _content: string) {
         this.title = _title
@@ -97,11 +97,11 @@ export class Post {
         return this._status
     }
 
-    set postAuthor(postAuthor: PostAuthor) {
+    set postAuthor(postAuthor: User) {
         this._postAuthor = postAuthor
     }
 
-    get postAuthor(): PostAuthor {
+    get postAuthor(): User {
         return this._postAuthor
     }
 

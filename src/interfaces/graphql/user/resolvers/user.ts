@@ -1,5 +1,5 @@
-import { Resolver, Query, Mutation, Args, ResolveProperty, Parent } from "@nestjs/graphql";
-import { QueryUserDetailArgs } from "../dto/user-detail.args";
+import { Resolver, Query, Args, ResolveProperty, Parent } from "@nestjs/graphql";
+import { UserDetailQuery } from "../dto/user-detail.args";
 import { UserQueryDto } from "../types/user";
 import { IUserService } from "#/application/service/user";
 import { IPostService } from "#/application/service/post";
@@ -16,8 +16,8 @@ export class UserResolver {
     @Query(returns => UserQueryDto, {
         name: 'user'
     })
-    async getUser(@Args() requestDto: QueryUserDetailArgs): Promise<UserQueryDto> {
-        return await this.userService.findOneById(requestDto);
+    async getUser(@Args() userDetailQuery: UserDetailQuery) {
+        return await this.userService.findOneById(userDetailQuery);
     }
 
     @ResolveProperty()
