@@ -2,20 +2,21 @@ import { BaseAssembler } from './base.assembler';
 import { PostEntity } from '#/infrastructure/entity/post.entity';
 import { PostDto } from '../../interfaces/graphql/post/types/post';
 import { PostStatus } from '../../domain/aggregate/post/post-status';
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, forwardRef } from '@nestjs/common';
 import { UserMapperService } from '../../infrastructure/mapper/user.mapper';
 import { UserAssembler } from './user.assembler';
+import { Post } from '#/domain/aggregate/post/post';
 
 @Injectable()
-export class PostAssembler implements BaseAssembler<PostEntity, PostDto> {
+export class PostAssembler implements BaseAssembler<PostEntity, Post, PostDto> {
 
     @Inject()
     private readonly userMapper: UserMapperService;
 
-    @Inject()
+    @Inject(forwardRef(() => UserAssembler))
     private readonly userAssembler: UserAssembler;
 
-    async apply(postEntity: PostEntity): Promise<PostDto> {
+    async applyEntityToDto(postEntity: PostEntity): Promise<PostDto> {
         if (!postEntity) {
             return null;
         }
@@ -30,9 +31,12 @@ export class PostAssembler implements BaseAssembler<PostEntity, PostDto> {
         // 查询出数据实体，在转换为领域对象
         const userEntity = await this.userMapper.find(postDto.authorId);
 
-        postDto.postAuthor = await this.userAssembler.apply(userEntity);
+        postDto.postAuthor = await this.userAssembler.applyEntityToDto(userEntity);
 
         return postDto;
     }
 
+    async applyDomainEntityToDto(post: Post): Promise<PostDto> {
+        return null;
+    }
 }

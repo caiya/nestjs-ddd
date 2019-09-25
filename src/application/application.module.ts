@@ -8,7 +8,7 @@ import { PostAssembler } from './assembler/post.assembler';
 
 @Module({
     imports: [DomainModule, InfrastructureModule],
-    exports: [UserService, PostService],
+    exports: [UserService, PostService, UserAssembler, PostAssembler],
     providers: [UserService, PostService, UserAssembler, PostAssembler],
 })
 export class ApplicationModule {}

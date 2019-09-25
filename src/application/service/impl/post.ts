@@ -17,7 +17,7 @@ export class PostService implements IPostService {
         const postResults: PostDto[] = [];
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < posts.length; i++) {
-            const res = await this.postAssembler.apply(posts[i]);
+            const res = await this.postAssembler.applyEntityToDto(posts[i]);
             postResults.push(res);
         }
         return postResults;

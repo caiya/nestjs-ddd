@@ -23,17 +23,13 @@ export class UserService implements IUserService {
     private readonly userRepository: UserRepositoryImpl;
 
     /**
-     *
-     */
-
-    /**
      * 查询服务直接调用 userMapper 查询获取 userEntity 实体，再使用 Assembler 将实体转为 Dto
      * @param args
      */
     async findOneById(args: UserDetailQueryArg): Promise<UserDto> {
         const uid = args.id;
         const user = await this.userMapper.find(uid);
-        return this.userAssembler.apply(user);
+        return this.userAssembler.applyEntityToDto(user);
     }
 
     /**
@@ -53,9 +49,9 @@ export class UserService implements IUserService {
         // 流程编排
 
         // domain save
-        this.userRepository.save(userDomain);
+        const userDomainEntity = await this.userRepository.save(userDomain);
+        const userDto = await this.userAssembler.applyDomainEntityToDto(userDomainEntity);
 
-        // event发送（省略）
-        return null;
+        return userDto;
     }
 }
