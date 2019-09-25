@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from 'type-graphql';
-import { UserQueryDto } from './user';
+import { UserQueryDto } from '../../user/types/user';
 
 @ObjectType()
 export class PostDto {

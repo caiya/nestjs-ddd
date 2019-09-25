@@ -1,6 +1,6 @@
 import { BaseAssembler } from "./base.assembler";
 import { PostEntity } from "#/infrastructure/entity/post.entity";
-import { PostDto } from "../../interfaces/graphql/user/types/post";
+import { PostDto } from "../../interfaces/graphql/post/types/post";
 import { PostStatus } from "../../domain/aggregate/post/post-status";
 import { Inject, Injectable } from "@nestjs/common";
 import { UserMapperService } from "../../infrastructure/mapper/user.mapper";

@@ -21,11 +21,9 @@ export class UserResolver {
     }
 
     @ResolveProperty()
-    async posts(@Parent() user) {
+    async posts(@Parent() user: UserQueryDto) {
         const { id } = user;
-        console.log('user111', user)
         const posts = await this.postService.findAll({ userId: id });
-        console.log('posts111', posts)
         return posts || []
     }
 }

@@ -1,5 +1,5 @@
 import { Post } from "#/domain/aggregate/post/post";
-import { PostDto } from "#/interfaces/graphql/user/types/post";
+import { PostDto } from "#/interfaces/graphql/post/types/post";
 
 export interface IPostService {
 

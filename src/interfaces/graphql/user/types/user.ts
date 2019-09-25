@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType, InputType, ArgsType } from 'type-graphql';
-import { PostDto } from './post';
+import { PostDto } from '../../post/types/post';
 import { IsOptional, Length, MaxLength, Min } from 'class-validator'
 
 @ObjectType()

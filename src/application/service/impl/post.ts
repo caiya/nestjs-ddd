@@ -2,7 +2,7 @@ import { IPostService } from "../post";
 import { Injectable, Inject } from "@nestjs/common";
 import { PostMapperService } from "../../../infrastructure/mapper/post.mapper";
 import { PostAssembler } from "../../assembler/post.assembler";
-import { PostDto } from "#/interfaces/graphql/user/types/post";
+import { PostDto } from "#/interfaces/graphql/post/types/post";
 
 export class PostService implements IPostService {
 

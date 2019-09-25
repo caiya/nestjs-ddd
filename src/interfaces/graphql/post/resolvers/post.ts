@@ -1,6 +1,7 @@
 import { Resolver, ResolveProperty, Parent } from "@nestjs/graphql";
 import { PostDto } from "../types/post";
 import { UserService } from "../../../../application/service/impl/user";
+import { UserDetailQuery } from "../../user/dto/user-detail.args";
 
 @Resolver(of => PostDto)
 export class PostResolver {
@@ -9,9 +10,14 @@ export class PostResolver {
         private readonly userService: UserService,
       ) {}
 
-    @ResolveProperty('postAuthor')
+    @ResolveProperty()
     async postAuthor(@Parent() post: PostDto) {
         const { authorId } = post;
-        // return await this.userService.findOneById(authorId)
+        
+        // 构建一个查询对象，然后委托给应用服务
+        let userDetailQuery = new UserDetailQuery()
+        userDetailQuery.id = authorId
+
+        return await this.userService.findOneById(userDetailQuery)
     }
 }
