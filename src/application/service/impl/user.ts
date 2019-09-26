@@ -42,7 +42,7 @@ export class UserService implements IUserService {
 
         // 数据校验
 
-        // create domain
+        // create domain，逻辑复杂的话可以调用domain factory进行
         let userDomain = new User();
         userDomain = Object.assign({}, userDomain, user);
 
