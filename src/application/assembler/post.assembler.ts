@@ -36,7 +36,7 @@ export class PostAssembler implements BaseAssembler<PostEntity, Post, PostDto> {
         return postDto;
     }
 
-    async applyDomainEntityToDto(post: Post): Promise<PostDto> {
+    async applyDomainToDto(post: Post): Promise<PostDto> {
         return null;
     }
 }

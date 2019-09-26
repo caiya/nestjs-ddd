@@ -50,7 +50,7 @@ export class UserService implements IUserService {
 
         // domain save
         const userDomainEntity = await this.userRepository.save(userDomain);
-        const userDto = await this.userAssembler.applyDomainEntityToDto(userDomainEntity);
+        const userDto = await this.userAssembler.applyDomainToDto(userDomainEntity);
 
         return userDto;
     }

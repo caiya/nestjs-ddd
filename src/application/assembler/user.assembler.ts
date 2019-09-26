@@ -25,7 +25,7 @@ export class UserAssembler implements BaseAssembler<UserEntity, User, UserDto> {
         return userDto;
     }
 
-    async applyDomainEntityToDto(user: User): Promise<UserDto> {
+    async applyDomainToDto(user: User): Promise<UserDto> {
         let userDto = new UserDto();
         userDto = Object.assign({}, userDto, user);
         const postEntitys = await this.postMapper.findAll({ userId: userDto.id });
