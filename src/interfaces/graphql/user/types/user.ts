@@ -16,5 +16,5 @@ export class UserDto {
     isActive: boolean;
 
     @Field(type => [PostDto])
-    posts: PostDto[];
+    posts?: PostDto[];
 }

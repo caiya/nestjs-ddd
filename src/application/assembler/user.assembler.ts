@@ -21,6 +21,7 @@ export class UserAssembler implements BaseAssembler<UserEntity, User, UserDto> {
         }
         let userDto = new UserDto();
         userDto = Object.assign({}, userDto, userEntity); // 类似于 BeanUtils.copyProperties
+        console.log('userDto', userDto)
         return userDto;
     }
 

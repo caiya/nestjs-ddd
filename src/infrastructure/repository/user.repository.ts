@@ -14,15 +14,15 @@ export class UserRepositoryImpl implements UserRepository {
         const userEntity = await this.userMapper.find(id);
 
         // 将数据库的poji转换为 领域对象
-        const user = UserConverter.deserialize(userEntity);
+        const user = UserConverter.toDomain(userEntity);
         return user;
     }
 
     async save(user: User): Promise<User> {
-        const userEntity = UserConverter.serialize(user);
+        const userEntity = UserConverter.toEntity(user);
         const inserted = await this.userMapper.add(userEntity);
 
-        const res = UserConverter.deserialize(inserted);
+        const res = UserConverter.toDomain(inserted);
         return res;
     }
 }

@@ -1,6 +1,6 @@
-export interface ConverterInterface<T, R> {
+export interface ConverterInterface<Domain, Entity> {
 
-    serialize(t: T): R; // 将领域对象转为dataobject
+    toEntity(t: Domain): Entity; // 将领域对象转为dataobject
 
-    deserialize(r: R): T; // 将dataobject转为领域对象
+    toDomain(r: Entity): Domain; // 将dataobject转为领域对象
 }
